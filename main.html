@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUEC Solution Pvt Ltd</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e9f7f1, #f2f0e6); /* Soft gradient background */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(135deg, #0072ff, #00c6ff); /* Bright blue gradient */
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            color: #ffffff;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav ul li a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 0;
+            background: #ffd700; /* Gold color for underline */
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            margin-top: 80px; /* Space for fixed header */
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+        }
+
+        .slide-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Main Content Styling */
+        .container {
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1s; /* Fade-in effect for the entire container */
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #ff4c00; /* Bright orange */
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-out; /* Slide-in effect for the heading */
+        }
+
+        /* Button Styling */
+        .btn {
+            background-color: #ff4c00; /* Bright orange */
+            color: #ffffff;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            margin: 10px;
+            border: none;
+            border-radius: 30px; /* Slightly rounded */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        }
+
+        .btn:hover {
+            background-color: #e04f00; /* Darker orange on hover */
+            transform: translateY(-3px); /* Button lift on hover */
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        /* Card Layout for Services */
+        .services {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 50px;
+            padding: 20px; /* Padding for the service section */
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            width: 300px; /* Slightly wider cards */
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative; /* Position for overlay effect */
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card h3 {
+            color: #0072ff; /* Blue heading color */
+            margin-bottom: 10px;
+            font-size: 1.8rem; /* Increased heading size */
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 15px; /* Added margin for spacing */
+        }
+
+        .service-card img {
+            width: 100%;
+            border-radius: 10px; /* Rounded corners for images */
+            margin-bottom: 15px; /* Space between image and text */
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #0072ff; /* Matching footer color */
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+            margin-top: auto; /* Sticks to the bottom */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2.8rem; /* Responsive heading size */
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-card {
+                width: 90%; /* Full width on small screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Company Name and Navigation -->
+    <header>
+        <div class="logo">AUEC Solution Pvt Ltd</div>
+        <nav>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+        <div class="slides">
+            <img class="slide-img" src="logo.jpg" alt="Welcome to AUEC">
+        </div>
+        <div class="slides">
+            <img class="slide-img" src="Untitled-1.jpg" alt="Innovative Solutions">
+        </div>
+        <div class="slides">
+            <img class="slide-img" src="A letter tech logo.png" alt="Join Us Today">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Welcome to AUEC Solution Pvt Ltd</h1>
+        <div class="services">
+            <div class="service-card">
+                <img src="logo.jpg" alt="AUEC Academy">
+                <h3>AUEC Academy</h3>
+                <p>Empowering students with knowledge and skills.</p>
+                <a href="index.html"><button class="btn">AUEC Academy</button></a> <!-- Changed button name -->
+            </div>
+            
+            <div class="service-card">
+                <img src="A letter tech logo.png" alt="AUEC Designers">
+                <h3>AUEC Designers</h3>
+                <p>Creative solutions tailored to your needs.</p>
+                <a href="desi.html"><button class="btn">AUEC Designers</button></a> <!-- Changed button name -->
+            </div>
+           <div class="service-card">
+                <img src="Untitled-1.jpg" alt="AUEC Aquarium">
+                <h3>AUEC Aquarium</h3>
+                <p>Explore aquatic life with our unique programs.</p>
+                <a href="index001.html"><button class="btn">AUEC Aquarium</button></a> <!-- Changed button name -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 AUEC Solution Pvt Ltd. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Slideshow functionality
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none"; // Hide all slides
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 } // Reset to first slide
+            slides[slideIndex - 1].style.display = "block"; // Show current slide
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        function plusSlides(n) {
+            slideIndex += n;
+            let slides = document.getElementsByClassName("slides");
+            if (slideIndex < 1) { slideIndex = slides.length; }
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none"; // Hide all slides
+            }
+            slides[slideIndex - 1].style.display = "block"; // Show current slide
+        }
+    </script>
+</body>
+
+</html>

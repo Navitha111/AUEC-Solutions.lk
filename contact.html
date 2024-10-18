@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUEC Aquarium - Contact</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>AUEC Aquarium</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="orders.html">Your Orders</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <main>
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="phone">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>Call us: <strong>+91-123-456-7890</strong></p>
+                </div>
+                <!-- Add more contact methods if needed -->
+            </div>
+            <div class="contact-form">
+                <h3>Replace Your Order</h3>
+                <form id="replace-order-form">
+                    <label for="order-name">Order Name:</label>
+                    <input type="text" id="order-name" name="order-name" required placeholder="Enter the name of the fish you want to replace">
+
+                    <label for="new-order">New Order:</label>
+                    <input type="text" id="new-order" name="new-order" required placeholder="Enter the name of the new fish">
+
+                    <button type="submit"><i class="fas fa-exchange-alt"></i> Replace Order</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 AUEC Aquarium. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUEC Aquarium</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"> <!-- New font for header -->
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+        header {
+            background: #00796b; /* Dark teal for header */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1));
+            animation: pulse 5s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        .button {
+            background-color: #ff7043;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #ff5722;
+            transform: translateY(-3px);
+        }
+        .section {
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .offering {
+            background: linear-gradient(to bottom right, #ffe082, #ffcc80);
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .offering:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        .footer-bg {
+            background-color: #00796b;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .heading {
+            font-family: 'Anton', sans-serif; /* Changed font for header */
+            color: #ff6f61; /* Color for the heading */
+            font-size: 4rem; /* Larger font size for impact */
+        }
+        .icon {
+            font-size: 3rem;
+            color: #00796b;
+            margin-bottom: 1rem;
+        }
+        /* Floating animation */
+        .float {
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translatey(0); }
+            50% { transform: translatey(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="heading">AUEC Aquarium</h1>
+        <p class="mt-2 text-lg">Dive into the beauty of aquatic life</p>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2 class="text-6xl font-semibold">Welcome to AUEC Aquarium</h2>
+            <p class="mt-4 text-xl">Discover a world beneath the waves.</p>
+            
+        </section>
+
+        <!-- Offerings Section -->
+        <section class="section">
+            <h2 class="text-4xl font-semibold text-center mb-8">Our Offerings</h2>
+            <div class="flex flex-wrap justify-center">
+                <div class="offering w-80 mx-4 float">
+                    <i class="icon fas fa-fish"></i>
+                    <h3 class="text-2xl font-semibold">Fish Types</h3>
+                    <p class="mt-2">Explore our diverse collection of exotic and local fish.</p>
+                </div>
+                <div class="offering w-80 mx-4 float">
+                    <i class="icon fas fa-cogs"></i>
+                    <h3 class="text-2xl font-semibold">Aquarium Setup</h3>
+                    <p class="mt-2">Get professional help in setting up your dream aquarium.</p>
+                </div>
+                <div class="offering w-80 mx-4 float">
+                    <i class="icon fas fa-leaf"></i>
+                    <h3 class="text-2xl font-semibold">Aquatic Plants</h3>
+                    <p class="mt-2">Choose from a wide variety of aquatic plants to enhance your aquarium.</p>
+                </div>
+            </div>
+			<a href="main.html" class="button">Go Back</a>
+        </section>
+    </main>
+
+    <footer class="footer-bg">
+        <p>&copy; 2024 AUEC Aquarium. All rights reserved.</p>
+        <div class="flex justify-center space-x-4 mt-2">
+            <a href="#" class="hover:text-yellow-300 transition duration-300">Facebook</a>
+            <a href="#" class="hover:text-yellow-300 transition duration-300">Instagram</a>
+            <a href="#" class="hover:text-yellow-300 transition duration-300">Contact Us</a>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
